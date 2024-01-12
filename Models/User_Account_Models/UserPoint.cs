@@ -25,6 +25,7 @@ namespace uHub_API.Models
         [Required]
         public long UserId {get; set;}
         [Required]
+        [Key]
         public string PointID {get; set;}
         [Required]
         public string UserPoints {get; set;}

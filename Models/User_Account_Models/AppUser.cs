@@ -33,6 +33,7 @@ namespace uHub_API.Models
 public class AppUser
 {
     [Required]
+    [Key]
     public long UserId {get; set;}
     [Required]
     public string AccountId {get; set;}

@@ -9,10 +9,11 @@ namespace uHub_API.Models
     public class UserRole
     {
         [Required]
-        public long RoleID;
+        [Key]
+        public long RoleID { get; set; }
         [Required]
-        public long? UserID;
+        public long? UserID { get; set; }
         [Required]
-        public string? Role;
+        public string? Role { get; set; }
     }
 }

@@ -7,6 +7,7 @@ namespace uHub_API.Models
         [Required]
         public long UserId {get; set;}
         [Required]
+        [Key]
         public long AddressId {get; set;}
         [Required]
         public long City {get; set;}

@@ -1,13 +1,15 @@
 using System.ComponentModel.DataAnnotations;
+using uHub_API.Services;
 
 namespace uHub_API.Models
 {
     public class MarketplaceItem
     {
         [Required]
-        public string Uuid {get; set;}
-        [Required]
+        [Key]
         public int ItemId { get; set; }
+        [Required]
+        public string Uuid {get; set;}
         [Required]
         public int AddressId {get; set; }
         [Required]
@@ -23,7 +25,7 @@ namespace uHub_API.Models
         [Required]
         public bool? IsSold {get; set; }
         [Required]
-        public Condition? Condition {get; set; }
+        public string? Condition {get; set; }
         [Required]
         public DateTime?  CreatedAt {get; set; }
         [Required]

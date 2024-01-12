@@ -4,15 +4,16 @@ namespace uHub_API.Models{
     public class PointDetail
     {
         [Required]
-        public long PointId;
+        public long PointId { get; set; }
 
         [Required]
-        public long DetialId;
+        [Key]
+        public long DetialId { get; set; }
 
         [Required]
-        public DateTime? Date;
+        public DateTime? Date { get; set; }
 
         [Required]
-        public string? Description;
+        public string? Description { get; set; }
     }
 }

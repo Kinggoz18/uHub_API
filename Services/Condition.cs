@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
-namespace uHub_API.Models
+namespace uHub_API.Services
 {
+    [Keyless]
     public class Condition{
         public static string NewItem { get {return "New";} }
         public static string  LikeNew { get {return "Like New";} }
