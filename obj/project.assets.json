@@ -3311,9 +3311,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chigoziemuonagolu/Desktop/uHub_API/uHub_API.csproj",
-      "projectName": "uHub_API",
-      "projectPath": "/Users/chigoziemuonagolu/Desktop/uHub_API/uHub_API.csproj",
+      "projectUniqueName": "/Users/chigoziemuonagolu/Desktop/uHub_API/uHubAPI.csproj",
+      "projectName": "uHubAPI",
+      "projectPath": "/Users/chigoziemuonagolu/Desktop/uHub_API/uHubAPI.csproj",
       "packagesPath": "/Users/chigoziemuonagolu/.nuget/packages/",
       "outputPath": "/Users/chigoziemuonagolu/Desktop/uHub_API/obj/",
       "projectStyle": "PackageReference",

@@ -4,18 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using uHub_API.Lib;
-using uHub_API.Models;
+using uHubAPI.DBContext;
+using uHubAPI.Lib;
+using uHubAPI.Models.UserAccountModels;
 
-namespace uHub_API.Services
+namespace uHubAPI.Services
 {
     /// <summary>
-    /// ....
+    /// Service class to provide CRUD opperations to App user controller class
     /// </summary>
     public class AppUserService
     {
-        private  readonly ApplicationDbContext _context;
-        public AppUserService(ApplicationDbContext context)
+        private  readonly AccountDbContext _context;
+
+        public AppUserService(AccountDbContext context)
         {
             _context = context;
         }

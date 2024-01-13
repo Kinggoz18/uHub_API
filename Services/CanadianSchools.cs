@@ -1,5 +1,8 @@
-namespace uHub_API.Models
+namespace uHubAPI.Services
 {
+    /// <summary>
+    /// Object with a list of all schoos in Canada
+    /// </summary>
     public class CanadaSchoolList{
         public class OntarioSchoolList{
                 public static readonly List<string> OntarioUniversity = new(){ 

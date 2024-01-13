@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gar1u11oBBvyv7eFPJ3kuDlRe0x+OOYT9Iz7KLNwyKufnX4o/80UQXdRIWOrS7036+Aal9iFBxT4lpC62epQGQ==",
+  "dgSpecHash": "1yzcM0Tq7vw+UQDv+aEayxJN9c/wNvmV9ATHHbhRlLXOyt1iVCZEaWdcwYI8CvxqjSCJszh5Ya+GKc29wV3+WQ==",
   "success": true,
-  "projectFilePath": "/Users/chigoziemuonagolu/Desktop/uHub_API/uHub_API.csproj",
+  "projectFilePath": "/Users/chigoziemuonagolu/Desktop/uHub_API/uHubAPI.csproj",
   "expectedPackageFiles": [
     "/Users/chigoziemuonagolu/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/chigoziemuonagolu/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
