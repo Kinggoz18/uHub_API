@@ -26,18 +26,24 @@ namespace uHubAPI.Models.UserAccountModels
         /// </summary>
         [Key]
         [Required]
-
         public override required long Id { get; set; }
-        /// <summary>
-        ///      The unique identifier of users that the role is associated with 
-        /// </summary>
-        [Required]
-        public required long? UserID { get; set; }
 
         /// <summary>
         ///      The role the user has
         /// </summary>
         [Required]
         public required string? Role { get; set; }
+
+        /// <summary>
+        ///      The unique identifier of users that the role is associated with
+        ///      one-to-many relationship with an AppUser
+        /// </summary>
+        [Required]
+        public required long AppUserId { get; set; }
+
+        /// <summary>
+        /// Navigation reference to app user
+        /// </summary>
+        public AppUser AppUser { get; set; } = null!;
     }
 }

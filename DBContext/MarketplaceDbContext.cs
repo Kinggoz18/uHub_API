@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using uHubAPI.Models.MarketplaceModels;
-using uHubAPI.Lib;
+using uHubAPI.Lib.Configurations;
 
 namespace uHubAPI.DBContext
 {

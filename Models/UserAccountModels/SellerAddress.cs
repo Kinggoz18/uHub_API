@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using uHubAPI.Models.MarketplaceModels;
 
 namespace uHubAPI.Models.UserAccountModels
 {
@@ -22,12 +23,6 @@ namespace uHubAPI.Models.UserAccountModels
         [Key]
         [Required]
         public override required long Id { get; set; }
-
-        /// <summary>
-        ///     Sellers identifier associated with their address
-        /// </summary>
-        [Required]
-        public required long UserId {get; set;}
 
         /// <summary>
         ///     The city of the address
@@ -58,5 +53,21 @@ namespace uHubAPI.Models.UserAccountModels
         /// </summary>
         [Required]
         public required string StreetInfo {get; set;}
+
+        /// <summary>
+        ///     App user foreign key
+        /// </summary>
+        [Required]
+        public required long AppUserId { get; set; }
+
+        /// <summary>
+        ///     Reference navigation to app user
+        /// </summary>
+        public AppUser? AppUser { get; set; }
+
+         /// <summary>
+        ///     Principal navigation to Marketplace item
+        /// </summary>
+        public ICollection<MarketplaceItem> MarketplaceItem { get; } = new List<MarketplaceItem>();
     }
 }

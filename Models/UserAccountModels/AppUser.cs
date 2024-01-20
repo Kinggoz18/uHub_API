@@ -94,5 +94,30 @@ namespace uHubAPI.Models.UserAccountModels
         /// </summary>
         [Required]
         public required int ReportCount { get; set; }
+
+        /// <summary>
+        ///     Principal navigation to user role
+        /// </summary>
+        public ICollection<UserRole> UserRole { get; } = new List<UserRole>();
+
+        /// <summary>
+        ///     Principal navigation to user point
+        /// </summary>
+        public UserPoint? UserPoint { get; set; }
+
+        /// <summary>
+        ///     Principal navigation to Sellers Address
+        /// </summary>
+        public SellerAddress? SellerAddress { get; set; }
+
+        /// <summary>
+        /// Principal naviagtion to oder history
+        /// </summary>
+        public ICollection<OrderHistory> OrderHistory { get; } = new List<OrderHistory>();
+
+        /// <summary>
+        ///     Principal navigation to a wishlist
+        /// </summary>
+        public Wishlist? Wishlist { get; set; }
     }
 }

@@ -34,5 +34,20 @@ namespace uHubAPI.Models.MarketplaceModels
         ///     The unique identifer of the parent category. May be null (empty).
         /// </summary>
         public long ParentCategoryId {get; set;}
+
+        /// <summary>
+        ///     Principal navigation to MarketplaceItem
+        /// </summary>
+        public ICollection<MarketplaceItem> MarketplaceItem { get; set; } = new List<MarketplaceItem>();
+
+        /// <summary>
+        ///     Principal navigation to category
+        /// </summary>
+        public Category? ParentCategory { get; set; }
+
+        /// <summary>
+        ///     Reference navigation to category
+        /// </summary>
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
     }
 }

@@ -28,15 +28,25 @@ namespace uHubAPI.Models.UserAccountModels
         public override required long Id { get; set; }
 
         /// <summary>
-        ///      The unique identifier of users that the point is associated with 
-        /// </summary>
-        [Required]
-        public required long UserId {get; set;}
-
-        /// <summary>
         ///    The amount of points the user has
         /// </summary>
         [Required]
         public required long UserPoints {get; set;}
+
+        /// <summary>
+        ///      The unique identifier of users that the point is associated with 
+        /// </summary>
+        [Required]
+        public required long AppUserId { get; set; }
+
+        /// <summary>
+        /// Navigation reference to AppUser
+        /// </summary>
+        public AppUser AppUser { get; set; } = null!;
+
+        /// <summary>
+        /// Principal navigatio to user point details
+        /// </summary>
+        public ICollection<PointDetail> PointDetail { get; } = new List<PointDetail>();
     }
 }

@@ -36,15 +36,27 @@ void ConfigureDbContext()
     string connectionString = AzureConnectionString.GetConnection(builder);
 
     // Configure DbContext for Account Management
-    builder.Services.AddDbContext<AccountDbContext>(options =>
+    builder.Services.AddDbContext<AccountDbContext>(optionsBuilder =>
     {
-        options.UseSqlServer(connectionString);
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(connectionString, options =>
+            {
+                options.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+            });
+        }
     });
 
     // Configure DbContext for Marketplace
-    builder.Services.AddDbContext<MarketplaceDbContext>(options =>
+    builder.Services.AddDbContext<MarketplaceDbContext>(optionsBuilder =>
     {
-        options.UseSqlServer(connectionString);
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(connectionString, options =>
+            {
+                options.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+            }); 
+        }
     });
 
 }

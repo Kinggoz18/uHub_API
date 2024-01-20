@@ -1,3 +1,4 @@
+using uHubAPI.Models.UserAccountModels;
 using System.ComponentModel.DataAnnotations;
 
 namespace uHubAPI.Models.MarketplaceModels
@@ -21,7 +22,7 @@ namespace uHubAPI.Models.MarketplaceModels
     public class MarketplaceItem : EntityBaseClass
     {
         /// <summary>
-        /// The unique identifier for the Marketplace Item
+        ///     The unique identifier for the Marketplace Item
         /// </summary>
         [Key]
         [Required]
@@ -32,18 +33,6 @@ namespace uHubAPI.Models.MarketplaceModels
         /// </summary>
         [Required]
         public required string Uuid {get; set;}
-
-        /// <summary>
-        /// The base address identifier of the Marketplace item
-        /// </summary>
-        [Required]
-        public required int AddressId {get; set; }
-
-        /// <summary>
-        /// The category identifier associated with a Marketplace Item
-        /// </summary>
-        [Required]
-        public required string CategoryId {get; set; }
 
         /// <summary>
         /// The title of the Marketplace item
@@ -92,6 +81,49 @@ namespace uHubAPI.Models.MarketplaceModels
         /// </summary>
         [Required]
         public required DateTime? ModifiedAt {get; set; }
+
+        /// <summary>
+        ///    Foregin key to sellers address
+        /// </summary>
+        [Required]
+        public required int SellerAddressId { get; set; }
+
+        /// <summary>
+        ///     Reference navigation to sellers address
+        /// </summary>
+        public SellerAddress? SellerAddress{ get; set; }
+
+        /// <summary>
+        ///     Forgien Key for a wishlist
+        /// </summary>
+        public long WishlistId { get; set; } = 0;
+
+        /// <summary>
+        ///     Reference navigation for a wishlist
+        /// </summary>
+        public Wishlist? Wishlist { get; set; }
+
+        /// <summary>
+        ///     Reference navigation for a wishlist
+        /// </summary>
+        public ICollection<MarketplaceItemImage>? MarketplaceItemImage { get; } = new List<MarketplaceItemImage>();
+
+        /// <summary>
+        ///     The category identifier associated with a Marketplace Item
+        /// </summary>
+        [Required]
+        public required string CategoryId { get; set; }
+
+        /// <summary>
+        ///     The category identifier associated with a Marketplace Item
+        /// </summary>
+        [Required]
+        public Category? Category { get; set; }
+
+        /// <summary>
+        ///     Principal navigation to OrderHistory
+        /// </summary>
+        public OrderHistory? OrderHistory { get; set; }
     }
 }
 

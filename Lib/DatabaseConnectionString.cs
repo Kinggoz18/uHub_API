@@ -10,19 +10,15 @@ namespace uHubAPI.Lib
     {
         
         public static string GetConnection(WebApplicationBuilder builder){
-            string connection = String.Empty;
             if (builder.Environment.IsDevelopment())
             {
                 builder.Configuration.AddEnvironmentVariables().AddJsonFile("appsettings.Development.json");
-
-                connection = Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING");
             }
-            else
-            {
-                connection = Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING");
-
-            }
-            return connection;
+            // Specify the key for the Azure SQL connection string
+            var connectionStrings = builder.Configuration.GetSection("ConnectionStrings");
+            string azureConnectionStringKey = "AZURE_SQL_CONNECTIONSTRING";
+            string connectionString = connectionStrings[azureConnectionStringKey]!;
+            return connectionString ?? throw new InvalidOperationException($"Connection string for {azureConnectionStringKey} is missing or empty.");
         }
     }
     
@@ -34,19 +30,18 @@ namespace uHubAPI.Lib
     /// </returns>
     public static class DockerConnectionString{
             public static string GetConnection(WebApplicationBuilder builder){
-            string connection = String.Empty;
             if (builder.Environment.IsDevelopment())
             {
-                builder.Configuration.AddEnvironmentVariables().AddJsonFile("appsettings.Development.json");
-
-                connection = builder.Configuration.GetConnectionString("DOCKER_MSSQL_CONNECTIONSTRING")
-                    ?? throw new ArgumentNullException("DOCKER_MSSQL_CONNECTIONSTRING is not set");
+                // Specify the key for the Azure SQL connection string
+                var connectionStrings = builder.Configuration.GetSection("ConnectionStrings");
+                string dockerConnectionStringKey = "DOCKER_MSSQL_CONNECTIONSTRING";
+                string connectionString = connectionStrings[dockerConnectionStringKey]!;
+                return connectionString ?? throw new InvalidOperationException($"Connection string for {dockerConnectionStringKey} is missing or empty.");
             }
             else
             {
                 throw new ArgumentException("Docker connection string cannot be used in production.");
             }
-            return connection;
         }
     }
 }

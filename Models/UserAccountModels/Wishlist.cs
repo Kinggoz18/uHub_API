@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using uHubAPI.Models.MarketplaceModels;
 
 namespace uHubAPI.Models.UserAccountModels
 {
@@ -30,16 +30,20 @@ namespace uHubAPI.Models.UserAccountModels
         public required override long Id { get; set; }
 
         /// <summary>
-        ///    Identifier for the user the wish list is associated with 
+        ///   Foreign key for AppUser
         /// </summary>
         [Required]
-        public required long UserId { get; set; }
+        public required long AppUserId { get; set; }
 
         /// <summary>
-        ///    Identifier for the marktplace item the list is associated with 
+        ///     Reference navigation for an app user
         /// </summary>
-        [Required]
-        public required long MarketplaceId { get; set; }
+        public AppUser? AppUser { get; set; }
+
+        /// <summary>
+        ///    Principal navigation for a marketplace item
+        /// </summary>
+        public ICollection<MarketplaceItem> MarketplaceItem { get; set; } = new List<MarketplaceItem>();
 
 }
 }

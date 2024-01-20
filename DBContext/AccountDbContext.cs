@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using uHubAPI.Models.UserAccountModels;
-using uHubAPI.Lib;
+using uHubAPI.Lib.Configurations;
 
 namespace uHubAPI.DBContext
 {
@@ -37,11 +37,14 @@ namespace uHubAPI.DBContext
                 .ConfigureIdentityColumns<SellerAddress>()
                 .ConfigureIdentityColumns<UserPoint>()
                 .ConfigureIdentityColumns<PointDetail>()
-                .ConfigureIdentityColumns<Wishlist>();
+                .ConfigureIdentityColumns<Wishlist>()
+
+            //Relationship configurations
+                .UserRoleToAppUser()
+                .UserPointToAppUser();
 
             base.OnModelCreating(modelBuilder);
         }
-
     }
 
 }

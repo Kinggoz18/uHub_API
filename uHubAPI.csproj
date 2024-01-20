@@ -21,10 +21,10 @@
 
   <ItemGroup>
     <None Remove="DBContext\" />
-    <None Remove="Migrations\AccountManagementDb\" />
+    <None Remove="Lib\Configurations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DBContext\" />
-    <Folder Include="Migrations\AccountManagementDb\" />
+    <Folder Include="Lib\Configurations\" />
   </ItemGroup>
 </Project>

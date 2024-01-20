@@ -22,22 +22,27 @@ namespace uHubAPI.Models.MarketplaceModels
 
     {
         /// <summary>
-        /// A marketplace item image unique identifier
+        ///     A marketplace item image unique identifier
         /// </summary>
         [Key]
         [Required]
         public override required long Id { get; set; }
 
         /// <summary>
-        /// The identifier for the marketplace item the image is associated with
-        /// </summary>
-        [Required]
-        public required long ItemId {get; set;}
-
-        /// <summary>
-        /// The image key used to identify the marketplace item in the external storage
+        ///     The image key used to identify the marketplace item in the external storage
         /// </summary>
         [Required]
         public required string ImageKey {get; set;}
+
+        /// <summary>
+        ///     Foregin key to MarketplaceItem
+        /// </summary>
+        [Required]
+        public required long MarketplaceItemId { get; set; }
+
+        /// <summary>
+        ///     Reference navigation to MarketplaceItem
+        /// </summary>
+        public MarketplaceItem? MarketplaceItem { get; set; }
     }
 }

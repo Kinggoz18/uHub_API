@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{41076A44-4B09-4C32-AEB2-6C6EE15BB030}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/UserAccountModels/UserRole.cs">
+    <Files>
+      <File FileName="Models/UserAccountModels/AppUser.cs" />
+      <File FileName="Models/UserAccountModels/UserRole.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="uHubAPI">
+            <Node name="uHubAPI">
+              <Node name="Models" expanded="True">
+                <Node name="UserAccountModels" expanded="True">
+                  <Node name="UserRole.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Services" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.uHubAPI PreferredExecutionTarget="/Applications/Firefox.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

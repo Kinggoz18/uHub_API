@@ -25,12 +25,6 @@ namespace uHubAPI.Models.UserAccountModels
         public override required long Id { get; set; }
 
         /// <summary>
-        ///     The idenitifer of the point
-        /// </summary>
-        [Required]
-        public required long PointId { get; set; }
-
-        /// <summary>
         ///     The date the point event took place
         /// </summary>
         [Required]
@@ -41,5 +35,17 @@ namespace uHubAPI.Models.UserAccountModels
         /// </summary>
         [Required]
         public required string Description { get; set; }
+
+        /// <summary>
+        ///     Foreign key to point id
+        /// </summary>
+        [Required]
+        public required long UserPointId { get; set; }
+
+        /// <summary>
+        ///     Reference navigation to user point
+        /// </summary>
+        public UserPoint? UserPoint { get; set; }
+
     }
 }
