@@ -1,11 +1,21 @@
-﻿using uHubAPI.Models.UserAccountModels;
-using uHubAPI.Models.MarketplaceModels;
+﻿using uHubAPI.Models.MarketplaceModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace uHubAPI.Lib.Configurations
 {
     public static class MarketplaceConfiguration
     {
+        public static ModelBuilder MarketplacePrice(this ModelBuilder modelBuilder)
+        {
+            //MarketplaceItem Price configuration
+            modelBuilder.Entity<MarketplaceItem>()
+                    .Property(m => m.Price)
+                    .HasColumnType("decimal(18, 2)")
+                    .HasPrecision(18, 2);
+
+            return modelBuilder;
+        }
+
         public static ModelBuilder MarketplaceItemToSellersAdd(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MarketplaceItem>()

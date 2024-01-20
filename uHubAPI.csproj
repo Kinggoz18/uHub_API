@@ -22,9 +22,11 @@
   <ItemGroup>
     <None Remove="DBContext\" />
     <None Remove="Lib\Configurations\" />
+    <None Remove="Migrations\MarketplaceDb\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DBContext\" />
     <Folder Include="Lib\Configurations\" />
+    <Folder Include="Migrations\MarketplaceDb\" />
   </ItemGroup>
 </Project>

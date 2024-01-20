@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace uHubAPI.Models.UserAccountModels
 {
@@ -21,8 +22,9 @@ namespace uHubAPI.Models.UserAccountModels
         /// <summary>
         ///     The unique idenitifer of the point detail
         /// </summary>
-        [Required]
-        public override required long Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override long Id { get; set; }
 
         /// <summary>
         ///     The date the point event took place
@@ -45,7 +47,7 @@ namespace uHubAPI.Models.UserAccountModels
         /// <summary>
         ///     Reference navigation to user point
         /// </summary>
-        public UserPoint? UserPoint { get; set; }
+        public UserPoint? UserPoint { get; set; } = null!;
 
     }
 }

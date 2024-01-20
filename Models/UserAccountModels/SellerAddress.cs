@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using uHubAPI.Models.MarketplaceModels;
 
 namespace uHubAPI.Models.UserAccountModels
@@ -21,8 +22,8 @@ namespace uHubAPI.Models.UserAccountModels
         ///     Sellers address unique identifier
         /// </summary>
         [Key]
-        [Required]
-        public override required long Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override long Id { get; set; }
 
         /// <summary>
         ///     The city of the address
@@ -63,9 +64,9 @@ namespace uHubAPI.Models.UserAccountModels
         /// <summary>
         ///     Reference navigation to app user
         /// </summary>
-        public AppUser? AppUser { get; set; }
+        public AppUser? AppUser { get; set; } = null!;
 
-         /// <summary>
+        /// <summary>
         ///     Principal navigation to Marketplace item
         /// </summary>
         public ICollection<MarketplaceItem> MarketplaceItem { get; } = new List<MarketplaceItem>();

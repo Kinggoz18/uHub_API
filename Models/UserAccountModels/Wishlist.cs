@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using uHubAPI.Models.MarketplaceModels;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace uHubAPI.Models.UserAccountModels
 {
@@ -26,8 +27,8 @@ namespace uHubAPI.Models.UserAccountModels
         ///    Unique identifier for a wishlist
         /// </summary>
         [Key]
-        [Required]
-        public required override long Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override long Id { get; set; }
 
         /// <summary>
         ///   Foreign key for AppUser
@@ -38,7 +39,7 @@ namespace uHubAPI.Models.UserAccountModels
         /// <summary>
         ///     Reference navigation for an app user
         /// </summary>
-        public AppUser? AppUser { get; set; }
+        public AppUser? AppUser { get; set; } = null!;
 
         /// <summary>
         ///    Principal navigation for a marketplace item

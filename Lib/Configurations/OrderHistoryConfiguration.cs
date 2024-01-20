@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using uHubAPI.Models.UserAccountModels;
+using uHubAPI.Models.MarketplaceModels;
+
 namespace uHubAPI.Lib.Configurations
 {
 	public static class OrderHistoryConfiguration
@@ -17,10 +19,14 @@ namespace uHubAPI.Lib.Configurations
         public static ModelBuilder MarketplaceItemToOrderHistory(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OrderHistory>()
+               .HasKey(e => e.Id);
+
+            modelBuilder.Entity<OrderHistory>()
                 .HasOne(e => e.MarketplaceItem)
                 .WithOne(e => e.OrderHistory)
-                .HasForeignKey<OrderHistory>(e => e.Uuid)
+                .HasForeignKey<OrderHistory>(e => e.MarketplaceItemId)
                 .IsRequired();
+
             return modelBuilder;
         }
     }

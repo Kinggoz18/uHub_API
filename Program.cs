@@ -33,7 +33,7 @@ app.Run();
 void ConfigureDbContext()
 {
     //Get the connection string
-    string connectionString = AzureConnectionString.GetConnection(builder);
+    string connectionString = DockerConnectionString.GetConnection(builder);
 
     // Configure DbContext for Account Management
     builder.Services.AddDbContext<AccountDbContext>(optionsBuilder =>

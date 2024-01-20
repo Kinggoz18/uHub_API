@@ -22,7 +22,8 @@
         /// <summary>
         /// Unique identifier of an entity.
         /// </summary>
-        public abstract long Id { get; set; }
+        public virtual long Id { get; set; }
+
     }
 }
 

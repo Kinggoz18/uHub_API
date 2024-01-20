@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using uHubAPI.Models.MarketplaceModels;
 namespace uHubAPI.Models.UserAccountModels
 {
@@ -20,12 +21,12 @@ namespace uHubAPI.Models.UserAccountModels
         /// <summary>
         ///     Unique identifier for a single order/purchase 
         /// </summary>
-        [Required]
         [Key]
-        public override required long Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override long Id { get; set; }
 
         /// <summary>
-        ///     The users identifer associated with the order/purchase 
+        ///     Foreign key to App user 
         /// </summary>
         [Required]
         public required long AppUserId { get; set; }
@@ -33,16 +34,17 @@ namespace uHubAPI.Models.UserAccountModels
         /// <summary>
         ///     Reference navigation to app user
         /// </summary>
-        public AppUser? AppUser { get; set; }
+        public AppUser? AppUser { get; set; } = null!;
 
         /// <summary>
         ///     Foregin key for marketplace item uuid
         /// </summary>
-        public required long Uuid { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public Guid MarketplaceItemId { get; set; }
 
         /// <summary>
         ///     Reference navigation to MarketplaceItem
         /// </summary>
-        public MarketplaceItem? MarketplaceItem { get; set; }
+        public MarketplaceItem? MarketplaceItem { get; set; } = null!;
     }
 }

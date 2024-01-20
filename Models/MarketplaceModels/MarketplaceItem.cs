@@ -1,5 +1,7 @@
 using uHubAPI.Models.UserAccountModels;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace uHubAPI.Models.MarketplaceModels
 {
@@ -19,20 +21,22 @@ namespace uHubAPI.Models.MarketplaceModels
     /// <summary>
     /// Entity class for a Marketplace Item
     /// </summary>
+
     public class MarketplaceItem : EntityBaseClass
     {
         /// <summary>
         ///     The unique identifier for the Marketplace Item
         /// </summary>
         [Key]
-        [Required]
-        public override long Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public new Guid Id { get; set; }
 
         /// <summary>
         /// The sellers unique identifier for the Marketplace Item
         /// </summary>
-        [Required]
-        public required string Uuid {get; set;}
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //public Guid MarketplaceItemUId { get; set; }
 
         /// <summary>
         /// The title of the Marketplace item
@@ -86,12 +90,12 @@ namespace uHubAPI.Models.MarketplaceModels
         ///    Foregin key to sellers address
         /// </summary>
         [Required]
-        public required int SellerAddressId { get; set; }
+        public required long SellerAddressId { get; set; }
 
         /// <summary>
         ///     Reference navigation to sellers address
         /// </summary>
-        public SellerAddress? SellerAddress{ get; set; }
+        public SellerAddress? SellerAddress { get; set; } = null!;
 
         /// <summary>
         ///     Forgien Key for a wishlist
@@ -101,18 +105,18 @@ namespace uHubAPI.Models.MarketplaceModels
         /// <summary>
         ///     Reference navigation for a wishlist
         /// </summary>
-        public Wishlist? Wishlist { get; set; }
+        public Wishlist? Wishlist { get; set; } = null!;
 
         /// <summary>
-        ///     Reference navigation for a wishlist
+        ///     Principal navigation for a wishlist
         /// </summary>
         public ICollection<MarketplaceItemImage>? MarketplaceItemImage { get; } = new List<MarketplaceItemImage>();
 
         /// <summary>
-        ///     The category identifier associated with a Marketplace Item
+        ///     Foreign key to a category
         /// </summary>
         [Required]
-        public required string CategoryId { get; set; }
+        public required long CategoryId { get; set; }
 
         /// <summary>
         ///     The category identifier associated with a Marketplace Item

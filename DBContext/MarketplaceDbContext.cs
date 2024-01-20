@@ -22,18 +22,14 @@ namespace uHubAPI.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Marketplace configurations
-
-            //ID configurations
-            modelBuilder.ConfigureIdentityColumns<MarketplaceItem>()
-                .ConfigureIdentityColumns<MarketplaceItemImage>()
-                .ConfigureIdentityColumns<Category>();
-
-            //MarketplaceItem Price configuration
-            modelBuilder.Entity<MarketplaceItem>()
-                    .Property(m => m.Price)
-                    .HasColumnType("decimal(18, 2)");
-
-            //other configurations
+            modelBuilder
+                .MarketplacePrice()
+                //Relationship configurations
+                .MarketplaceImageToItem()
+                .MarketplaceItemToCategory()
+                .MarketplaceItemToOrderHistory()
+                .MarketplaceItemToSellersAdd()
+                .MarketplaceItemToWishlist();
 
             base.OnModelCreating(modelBuilder);
         }

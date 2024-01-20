@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace uHubAPI.Models.UserAccountModels
 {
@@ -24,8 +25,8 @@ namespace uHubAPI.Models.UserAccountModels
         ///    The unique identifier of users point
         /// </summary>
         [Key]
-        [Required]
-        public override required long Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override long Id { get; set; }
 
         /// <summary>
         ///    The amount of points the user has
@@ -34,18 +35,18 @@ namespace uHubAPI.Models.UserAccountModels
         public required long UserPoints {get; set;}
 
         /// <summary>
-        ///      The unique identifier of users that the point is associated with 
+        ///      Foreign key to an App user
         /// </summary>
         [Required]
         public required long AppUserId { get; set; }
 
         /// <summary>
-        /// Navigation reference to AppUser
+        ///     Navigation reference to AppUser
         /// </summary>
         public AppUser AppUser { get; set; } = null!;
 
         /// <summary>
-        /// Principal navigatio to user point details
+        ///     Principal navigatio to user point details
         /// </summary>
         public ICollection<PointDetail> PointDetail { get; } = new List<PointDetail>();
     }

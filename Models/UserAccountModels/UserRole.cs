@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace uHubAPI.Models.UserAccountModels
 {
@@ -25,8 +26,8 @@ namespace uHubAPI.Models.UserAccountModels
         ///      The unique identifier of users role
         /// </summary>
         [Key]
-        [Required]
-        public override required long Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override long Id { get; set; }
 
         /// <summary>
         ///      The role the user has
@@ -35,14 +36,13 @@ namespace uHubAPI.Models.UserAccountModels
         public required string? Role { get; set; }
 
         /// <summary>
-        ///      The unique identifier of users that the role is associated with
-        ///      one-to-many relationship with an AppUser
+        ///      Foreign key to an app user
         /// </summary>
         [Required]
         public required long AppUserId { get; set; }
 
         /// <summary>
-        /// Navigation reference to app user
+        ///     Navigation reference to app user
         /// </summary>
         public AppUser AppUser { get; set; } = null!;
     }

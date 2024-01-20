@@ -29,19 +29,14 @@ namespace uHubAPI.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Account management configurations
-
-            //ID configurations
-            modelBuilder.ConfigureIdentityColumns<AppUser>()
-                .ConfigureIdentityColumns<UserRole>()
-                .ConfigureIdentityColumns<OrderHistory>()
-                .ConfigureIdentityColumns<SellerAddress>()
-                .ConfigureIdentityColumns<UserPoint>()
-                .ConfigureIdentityColumns<PointDetail>()
-                .ConfigureIdentityColumns<Wishlist>()
-
+            modelBuilder
             //Relationship configurations
                 .UserRoleToAppUser()
-                .UserPointToAppUser();
+                .UserPointToAppUser()
+                .UserPointToPointDetail()
+                .AppUserToOrderHistory()
+                .SellersAddToAppUser()
+                .WishlistToAppUser();
 
             base.OnModelCreating(modelBuilder);
         }

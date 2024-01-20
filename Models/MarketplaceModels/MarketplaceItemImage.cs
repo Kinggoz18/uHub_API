@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace uHubAPI.Models.MarketplaceModels
 {
@@ -25,8 +26,8 @@ namespace uHubAPI.Models.MarketplaceModels
         ///     A marketplace item image unique identifier
         /// </summary>
         [Key]
-        [Required]
-        public override required long Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override long Id { get; set; }
 
         /// <summary>
         ///     The image key used to identify the marketplace item in the external storage
@@ -38,11 +39,11 @@ namespace uHubAPI.Models.MarketplaceModels
         ///     Foregin key to MarketplaceItem
         /// </summary>
         [Required]
-        public required long MarketplaceItemId { get; set; }
+        public required Guid MarketplaceItemId { get; set; }
 
         /// <summary>
         ///     Reference navigation to MarketplaceItem
         /// </summary>
-        public MarketplaceItem? MarketplaceItem { get; set; }
+        public MarketplaceItem? MarketplaceItem { get; set; } = null!;
     }
 }

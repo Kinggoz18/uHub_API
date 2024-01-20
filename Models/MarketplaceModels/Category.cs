@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace uHubAPI.Models.MarketplaceModels
 {
@@ -21,8 +22,8 @@ namespace uHubAPI.Models.MarketplaceModels
         ///    The category unique identifer
         /// </summary>
         [Key]
-        [Required]
-        public override required long Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override long Id { get; set; }
 
         /// <summary>
         ///     The name of the category
@@ -41,12 +42,12 @@ namespace uHubAPI.Models.MarketplaceModels
         public ICollection<MarketplaceItem> MarketplaceItem { get; set; } = new List<MarketplaceItem>();
 
         /// <summary>
-        ///     Principal navigation to category
+        ///  Reference navigation to category
         /// </summary>
-        public Category? ParentCategory { get; set; }
+        public Category? ParentCategory { get; set; } = null!;
 
         /// <summary>
-        ///     Reference navigation to category
+        ///     Principal navigation to category
         /// </summary>
         public ICollection<Category> Categories { get; set; } = new List<Category>();
     }
