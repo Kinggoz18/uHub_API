@@ -1,6 +1,7 @@
-using uHubAPI.DBContext;
-using uHubAPI.Lib;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
+using uHubAPI.Database.DBContext;
+using uHubAPI.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-ConfigureDbContext();   // Add configuration for the database
 
+//Add MYSQL and DB configuration
+ConfigureSQLServices(builder.Services);
+ConfigureDbContext();
 
 var app = builder.Build();
 
@@ -29,34 +32,40 @@ app.MapControllers();
 app.Run();
 
 
-
+//Connection Db context
 void ConfigureDbContext()
 {
-    //Get the connection string
-    string connectionString = DockerConnectionString.GetConnection(builder);
+    // Get the connection string for MySQL
+    string connectionString = MYSQLConnectionString.GetConnection(builder);
 
-    // Configure DbContext for Account Management
-    builder.Services.AddDbContext<AccountDbContext>(optionsBuilder =>
+    // Configure DbContext for the Application
+    builder.Services.AddDbContext<AppDbContext>(optionsBuilder =>
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer(connectionString, options =>
+            optionsBuilder.UseMySql(connectionString, new MariaDbServerVersion(new Version(10, 7, 3)), mySqlOptions =>
             {
-                options.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                mySqlOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
             });
         }
     });
-
-    // Configure DbContext for Marketplace
-    builder.Services.AddDbContext<MarketplaceDbContext>(optionsBuilder =>
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            optionsBuilder.UseSqlServer(connectionString, options =>
-            {
-                options.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-            }); 
-        }
-    });
-
 }
+
+//Connection to MySQL
+void ConfigureSQLServices(IServiceCollection services)
+{
+    try
+    {
+        string connectionString = MYSQLConnectionString.GetConnection(builder);
+        services.AddTransient<MySqlConnection>(_ => new MySqlConnection(connectionString));
+    }
+    catch (MySqlException ex)
+    {
+        throw new Exception(ex.Message);
+    }
+    catch (Exception ex)
+    {
+        throw new Exception(ex.Message);
+    }
+}
+
