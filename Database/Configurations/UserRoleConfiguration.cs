@@ -10,7 +10,7 @@ namespace uHubAPI.Database.Configurations
 			modelBuilder.Entity<UserRole>()
 				.HasOne(e => e.AppUser)
 				.WithMany(e => e.UserRoles)
-				.HasForeignKey(e => e.AppUserId)
+				.HasForeignKey(e => e.UserId)
 				.OnDelete(DeleteBehavior.Cascade)
 				.IsRequired();
 

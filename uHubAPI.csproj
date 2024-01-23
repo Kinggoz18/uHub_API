@@ -42,11 +42,9 @@
     <None Remove="Features\WishlistRepo\Controllers\" />
     <None Remove="Features\WishlistRepo\Models\" />
     <None Remove="Features\WishlistRepo\Services\" />
-    <None Remove="Features\MarketplaceRepo\" />
-    <None Remove="Features\MarketplaceRepo\Controllers\" />
-    <None Remove="Features\MarketplaceRepo\Services\" />
     <None Remove="Database\Configurations\" />
     <None Remove="Features\Enums\" />
+    <None Remove="Features\MarketplaceRepo\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
@@ -69,10 +67,8 @@
     <Folder Include="Features\WishlistRepo\Controllers\" />
     <Folder Include="Features\WishlistRepo\Models\" />
     <Folder Include="Features\WishlistRepo\Services\" />
-    <Folder Include="Features\MarketplaceRepo\" />
-    <Folder Include="Features\MarketplaceRepo\Controllers\" />
-    <Folder Include="Features\MarketplaceRepo\Services\" />
     <Folder Include="Database\Configurations\" />
     <Folder Include="Features\Enums\" />
+    <Folder Include="Features\MarketplaceRepo\" />
   </ItemGroup>
 </Project>

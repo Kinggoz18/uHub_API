@@ -19,7 +19,7 @@ namespace uHubAPI.Features.AppUserRepo.Models
         /// User role foreign key to App user
         /// </summary>
         [Required]
-        public required long AppUserId { get; set; }
+        public required long UserId { get; set; }
 
         /// <summary>
         /// The App user role
