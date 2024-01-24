@@ -1,24 +1,22 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using uHubAPI.Extensions;
 
 namespace uHubAPI.Features.AppUserRepo.Models
 {
     /// <summary>
     ///     Class entity for an app user
     /// </summary>
-    public class AppUser 
+    public class AppUser : BaseEntity
     {
         /// <summary>
         /// AppUser primary key 
         /// </summary>
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long UserId { get; set; }
 
         /// <summary>
         /// App user uuid
         /// </summary>
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public Guid AccountId { get; set; }
 
         /// <summary>
@@ -58,7 +56,7 @@ namespace uHubAPI.Features.AppUserRepo.Models
         /// <summary>
         /// App user verification status
         /// </summary>
-        public required string VerificationStatus { get; set; }
+        public string VerificationStatus { get; set; } = null!;
 
         /// <summary>
         /// App user profile image key/link
@@ -68,20 +66,17 @@ namespace uHubAPI.Features.AppUserRepo.Models
         /// <summary>
         /// Flag representing if App user is locked
         /// </summary>
-        [Required]
-        public required bool IsLocked { get; set; }
+        public bool IsLocked { get; set; }
 
         /// <summary>
         /// Flag representing if App user is banned
         /// </summary>
-        [Required]
-        public required bool IsBanned { get; set; }
+        public bool IsBanned { get; set; }
 
         /// <summary>
         /// App user report count
         /// </summary>
-        [Required]
-        public required int ReportCount { get; set; }
+        public int ReportCount { get; set; }
 
 
 

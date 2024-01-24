@@ -1,18 +1,17 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using uHubAPI.Extensions;
 
 namespace uHubAPI.Features.AppUserRepo.Models
 {
     /// <summary>
     ///    Entity class for a users role
     /// </summary>
-    public class UserRole 
+    public class UserRole : BaseEntity
     {
         /// <summary>
         /// User role primary key
         /// </summary>
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long RoleId { get; set; }
 
         /// <summary>

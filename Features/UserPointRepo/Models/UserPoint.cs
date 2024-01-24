@@ -1,5 +1,5 @@
 
-namespace uHubAPI.BaseModel.UserAccountModels
+namespace uHubAPI.Features.UserPointsRepo.Models
 {
     /*======================================================================
     | User Point Entity class

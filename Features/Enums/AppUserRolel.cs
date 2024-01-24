@@ -8,6 +8,7 @@ namespace uHubAPI.Features.Enums
     {
         Regular,
         Seller,
+        Student
     }
 }
 

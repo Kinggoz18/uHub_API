@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using uHubAPI.BaseModel.UserAccountModels;
+﻿using Microsoft.EntityFrameworkCore;
 using uHubAPI.Database.Configurations;
 using uHubAPI.Features.AppUserRepo.Models;
 using uHubAPI.Features.MarketplaceRepo.Models;
 using uHubAPI.Features.OrderHistoryRepo.Models;
+using uHubAPI.Features.AppUserRepo.Configurations;
 using uHubAPI.Features.SellersAddressRepo.Models;
 using uHubAPI.Features.UserPointsRepo.Models;
 using uHubAPI.Features.WishlistRepo.Models;
@@ -34,8 +33,11 @@ namespace uHubAPI.Database.DBContext
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Apply relationship configurations
+            //Id configuration
             modelBuilder
+                .AppUserIdentityColumn()
+                .UserRoleIdentityColumn()
+            //Apply relationship configurations
                 .UserRoleToAppUser();
 
             base.OnModelCreating(modelBuilder);

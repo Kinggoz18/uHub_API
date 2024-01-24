@@ -54,7 +54,7 @@ namespace uHubAPI.Migrations
                 {
                     RoleId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AppUserId = table.Column<long>(type: "bigint", nullable: false),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
                     Role = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -62,8 +62,8 @@ namespace uHubAPI.Migrations
                 {
                     table.PrimaryKey("PK_UserRoles", x => x.RoleId);
                     table.ForeignKey(
-                        name: "FK_UserRoles_AppUsers_AppUserId",
-                        column: x => x.AppUserId,
+                        name: "FK_UserRoles_AppUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AppUsers",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
@@ -71,9 +71,9 @@ namespace uHubAPI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserRoles_AppUserId",
+                name: "IX_UserRoles_UserId",
                 table: "UserRoles",
-                column: "AppUserId");
+                column: "UserId");
         }
 
         /// <inheritdoc />

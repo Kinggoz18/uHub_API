@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using uHubAPI.Database.DBContext;
@@ -11,7 +12,7 @@ using uHubAPI.Database.DBContext;
 namespace uHubAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240121235210_ApplicationMigration")]
+    [Migration("20240124024108_ApplicationMigration")]
     partial class ApplicationMigration
     {
         /// <inheritdoc />
@@ -26,10 +27,12 @@ namespace uHubAPI.Migrations
                 {
                     b.Property<long>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 10000000L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<Guid>("AccountId")
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Email")
@@ -81,16 +84,20 @@ namespace uHubAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<long>("AppUserId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<long>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 10000000L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.HasKey("RoleId");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
                 });
@@ -99,7 +106,7 @@ namespace uHubAPI.Migrations
                 {
                     b.HasOne("uHubAPI.Features.AppUserRepo.Models.AppUser", "AppUser")
                         .WithMany("UserRoles")
-                        .HasForeignKey("AppUserId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
