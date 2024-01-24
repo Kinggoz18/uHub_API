@@ -6,6 +6,9 @@ using uHubAPI.Features.AppUserRepo.Services;
 
 namespace uHubAPI.Configurations
 {
+    /// <summary>
+    /// TODO: Add summary
+    /// </summary>
 	public class BulderConfigurations
 	{
         private WebApplicationBuilder _builder;

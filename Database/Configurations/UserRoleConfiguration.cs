@@ -3,9 +3,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace uHubAPI.Database.Configurations
 {
+	/// <summary>
+	/// TODO: Add summary
+	/// </summary>
 	public static class UserRoleConfiguration
 	{
-		public static ModelBuilder UserRoleToAppUser(this ModelBuilder modelBuilder)
+        /// <summary>
+        /// TODO: Add summary
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        /// <returns></returns>
+        public static ModelBuilder UserRoleToAppUser(this ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<UserRole>()
 				.HasOne(e => e.AppUser)
