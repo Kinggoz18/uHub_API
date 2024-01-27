@@ -11,7 +11,7 @@ Welcome to the Development Version of the Marketplace API! This API is actively 
   - [Database Setup](#database-setup)
   - [Configuration](#configuration)
 - [Observing Development](#observing-development)
-- [API Endpoints](#api-endpoints)
+- [API Endpoints](#current-Api-endpoints)
 - [Contributing](#contributing)
 - [License](#license)
 
