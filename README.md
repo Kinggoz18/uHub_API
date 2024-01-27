@@ -4,7 +4,7 @@
 Welcome to the Development Version of the Marketplace API! This API is actively under development and serves as the backend for a marketplace application. Feel free to observe or follow along with the development progress.
 
 ## Table of Contents
-
+-[The Team](#The-Team)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
   - [Clone the Repository](#clone-the-repository)
@@ -14,6 +14,11 @@ Welcome to the Development Version of the Marketplace API! This API is actively 
 - [API Endpoints](#api-endpoints)
 - [Contributing](#contributing)
 - [License](#license)
+
+## The Team
+The two developers currently working on this project are:
+-Kinggoz18
+-emmanuelU17
 
 ## Prerequisites
 
