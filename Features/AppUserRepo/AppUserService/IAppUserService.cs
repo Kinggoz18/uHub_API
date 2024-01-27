@@ -1,5 +1,5 @@
 ﻿using System;
-namespace uHubAPI.Features.AppUserRepo.Services
+namespace uHubAPI.Features.AppUserRepo.AppUserService
 {
 	public interface IAppUserService
 	{

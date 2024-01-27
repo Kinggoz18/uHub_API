@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using uHubAPI.Extensions;
+using uHubAPI.Extensions.Models;
 
 namespace uHubAPI.Features.AppUserRepo.Models
 {

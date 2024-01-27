@@ -1,36 +1,21 @@
 ﻿<Properties StartupConfiguration="{41076A44-4B09-4C32-AEB2-6C6EE15BB030}|https">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/chigoziemuonagolu/Desktop/uHub_API/Lib/DatabaseConnectionString.cs" relfile="Lib/DatabaseConnectionString.cs" line="21" column="1" />
-      <Breakpoint file="/Users/chigoziemuonagolu/Desktop/uHub_API/Lib/DatabaseConnectionString.cs" relfile="Lib/DatabaseConnectionString.cs" line="36" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.uHubAPITests FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.uHubAPI PreferredExecutionTarget="/Applications/Firefox.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="appsettings.Development.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Features/AppUserRepo/Configurations/AppUserConfiguration.cs">
     <Files>
-      <File FileName="Lib/Configurations/OrderHistoryConfiguration.cs" Line="27" Column="70" />
-      <File FileName="Models/UserAccountModels/OrderHistory.cs" Line="43" Column="38" />
-      <File FileName="Models/UserAccountModels/AppUser.cs" Line="1" Column="1" />
-      <File FileName="Program.cs" Line="5" Column="1" />
-      <File FileName="DBContext/MarketplaceDbContext.cs" Line="1" Column="1" />
-      <File FileName="Lib/DatabaseConnectionString.cs" Line="37" Column="82" />
-      <File FileName="Properties/launchSettings.json" Line="1" Column="1" />
-      <File FileName="Controllers/AppUsers.cs" Line="1" Column="1" />
-      <File FileName="appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="Features/AppUserRepo/Configurations/AppUserConfiguration.cs" Line="7" Column="26" />
+      <File FileName="uHubAPI.Tests/Usings.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="uHubAPI">
-            <Node name="uHubAPI" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Lib" expanded="True">
-                <Node name="Configurations" expanded="True" />
-              </Node>
+            <Node name="uHubAPI">
+              <Node name="uHubAPI.Tests" expanded="True" selected="True" />
             </Node>
           </Node>
         </State>

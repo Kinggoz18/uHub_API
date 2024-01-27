@@ -1,8 +1,7 @@
 ﻿using System.Security.Cryptography;
-using Org.BouncyCastle.Asn1.Pkcs;
 using System.Text;
 
-namespace uHubAPI.Extensions
+namespace uHubAPI.Extensions.Services
 {
 	/// <summary>
 	/// Utility class to hash an app users password 

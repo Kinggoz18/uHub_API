@@ -9,12 +9,12 @@ using uHubAPI.Features.UserPointsRepo.Models;
 using uHubAPI.Features.WishlistRepo.Models;
 
 
-namespace uHubAPI.Database.DBContext
+namespace uHubAPI.Database.DbContext
 {
     /// <summary>
     /// Database context of the application
     /// </summary>
-    public class AppDbContext : DbContext
+    public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

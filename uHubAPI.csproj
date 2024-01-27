@@ -48,6 +48,10 @@
     <None Remove="Extensions\" />
     <None Remove="Configurations\" />
     <None Remove="Features\AppUserRepo\Configurations\" />
+    <None Remove="Extensions\Models\" />
+    <None Remove="Extensions\Services\" />
+    <None Remove="Features\AppUserRepo\AppUserService\" />
+    <None Remove="Extensions\Services\EntityFinder\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
@@ -76,5 +80,13 @@
     <Folder Include="Extensions\" />
     <Folder Include="Configurations\" />
     <Folder Include="Features\AppUserRepo\Configurations\" />
+    <Folder Include="Extensions\Models\" />
+    <Folder Include="Extensions\Services\" />
+    <Folder Include="Features\AppUserRepo\AppUserService\" />
+    <Folder Include="Extensions\Services\EntityFinder\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="appsettings %28copy%29.Development.json" />
+    <Content Remove="appsettings %28copy%29.json" />
   </ItemGroup>
 </Project>

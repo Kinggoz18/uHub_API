@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using uHubAPI.Database;
 using MySql.Data.MySqlClient;
-using uHubAPI.Database.DBContext;
-using uHubAPI.Database;
-using uHubAPI.Features.AppUserRepo.Services;
+using uHubAPI.Database.DbContext;
+using Microsoft.EntityFrameworkCore;
+using uHubAPI.Extensions.Services.EntityFinder;
+using uHubAPI.Features.AppUserRepo.AppUserService;
 
 namespace uHubAPI.Configurations
 {
@@ -72,8 +73,14 @@ namespace uHubAPI.Configurations
         {
 
             //Services Cofiurations
-            services.AddTransient<IAppUserServiceFactory, AppUserServiceFactory>();
-            services.AddTransient<CreateAppUser>();
+            services.AddScoped<IFindEntity, FindUser>();
+            services.AddScoped<IFindUser, FindUser>();
+            services.AddScoped<IAppUserServiceFactory, AppUserServiceFactory>();
+            services.AddScoped<CreateAppUser>();
+            services.AddScoped<LoginAppUser>();
+            services.AddScoped<UpdateAppUser>();
+            services.AddScoped<GetAppUser>();
+            services.AddScoped<DeleteAppUser>();
 
             // Add services to the container.
             services.AddCors();

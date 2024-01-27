@@ -1,10 +1,3 @@
-/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.csproj.AssemblyReference.cache
-/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.GeneratedMSBuildEditorConfig.editorconfig
-/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.AssemblyInfoInputs.cache
-/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.AssemblyInfo.cs
-/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.csproj.CoreCompileInputs.cache
-/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.MvcApplicationPartsAssemblyInfo.cs
-/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.MvcApplicationPartsAssemblyInfo.cache
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/appsettings.Development.json
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/appsettings.json
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/uHubAPI
@@ -42,6 +35,8 @@
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/Microsoft.Win32.SystemEvents.dll
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/Mono.TextTemplating.dll
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/MySql.Data.dll
+/Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/MySqlConnector.dll
+/Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/Pomelo.EntityFrameworkCore.MySql.dll
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -72,6 +67,13 @@
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.csproj.AssemblyReference.cache
+/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.AssemblyInfoInputs.cache
+/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.AssemblyInfo.cs
+/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.csproj.CoreCompileInputs.cache
+/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.MvcApplicationPartsAssemblyInfo.cs
+/Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.MvcApplicationPartsAssemblyInfo.cache
 /Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/staticwebassets/msbuild.uHubAPI.Microsoft.AspNetCore.StaticWebAssets.props
 /Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/staticwebassets/msbuild.build.uHubAPI.props
 /Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.uHubAPI.props
@@ -86,5 +88,3 @@
 /Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.pdb
 /Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/uHubAPI.genruntimeconfig.cache
 /Users/chigoziemuonagolu/Desktop/uHub_API/obj/Debug/net7.0/ref/uHubAPI.dll
-/Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/MySqlConnector.dll
-/Users/chigoziemuonagolu/Desktop/uHub_API/bin/Debug/net7.0/Pomelo.EntityFrameworkCore.MySql.dll

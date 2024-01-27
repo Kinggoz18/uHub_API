@@ -1,5 +1,5 @@
 ﻿using System;
-namespace uHubAPI.Features.AppUserRepo.Services
+namespace uHubAPI.Features.AppUserRepo.AppUserService
 {
     /// <summary>
     ///  App service Factory Interface
@@ -10,7 +10,7 @@ namespace uHubAPI.Features.AppUserRepo.Services
     }
 
     /// <summary>
-    /// Factory class to call appropriate app user service during DI.
+    /// Factory class to build appropriate app user service during DI.
     /// </summary>
     public class AppUserServiceFactory : IAppUserServiceFactory
     {
@@ -22,7 +22,7 @@ namespace uHubAPI.Features.AppUserRepo.Services
         }
 
         /// <summary>
-        /// Creates an instance of the appropriate app user service during DI.
+        /// Returns an instance of the appropriate app user service during DI.
         /// </summary>
         /// <param name="key">Name of the AppUser service</param>
         /// <returns></returns>
@@ -32,6 +32,10 @@ namespace uHubAPI.Features.AppUserRepo.Services
             return key switch
             {
                 "CreateAppUser" => _serviceProvider.GetRequiredService<CreateAppUser>(),
+                "LoginAppUser" => _serviceProvider.GetRequiredService<LoginAppUser>(),
+                "GetAppUser" => _serviceProvider.GetRequiredService<GetAppUser>(),
+                "DeleteAppUser" => _serviceProvider.GetRequiredService<DeleteAppUser>(),
+                "UpdateAppUser" => _serviceProvider.GetRequiredService<UpdateAppUser>(),
                 _ => throw new ArgumentException($"Unknown key: {key}")
             };
         }

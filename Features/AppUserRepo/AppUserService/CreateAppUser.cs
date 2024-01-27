@@ -1,42 +1,43 @@
-using uHubAPI.Extensions;
 using uHubAPI.Features.Enums;
-using uHubAPI.Database.DBContext;
+using uHubAPI.Database.DbContext;
+using uHubAPI.Extensions.Models;
+using uHubAPI.Extensions.Services;
 using Microsoft.EntityFrameworkCore;
 using uHubAPI.Features.AppUserRepo.Models;
+using uHubAPI.Extensions.Services.EntityFinder;
 
-namespace uHubAPI.Features.AppUserRepo.Services
+namespace uHubAPI.Features.AppUserRepo.AppUserService
 {
     /// <summary>
-    /// Service class to create an app user
+    /// App user create user service class
     /// </summary>
     public class CreateAppUser : IAppUserService
     {
         private readonly AppDbContext _context;
-
-        public CreateAppUser(AppDbContext context)
+        private readonly IFindUser _finder;
+        public CreateAppUser(AppDbContext context, IFindUser finder)
         {
+            _finder = finder;
             _context = context;
         }
 
         /// <summary>
-        /// Create a new app use
+        /// Asynchronous method to create a new app use
         /// </summary>
         /// <param name="newUser"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// OperationResult an object.
+        /// </returns>
         /// <exception cref="Exception"></exception>
-        public async Task<OperationResult<AppUser>> CreateUser(AppUser newUser)
+        public async Task<OperationResult<AppUser>> CreateUserAsync(AppUser newUser)
         {
             try
             {
-                //Check if user exists in db
-                var userExists = await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == newUser.Email);
-                if (userExists != null)
+                var result = await _finder.FindByEmailAsync(newUser.Email);
+                //if the email exists in db
+                if (result.Success)
                 {
-                    return new OperationResult<AppUser>()
-                    {
-                        Success = false,
-                        Entity = userExists
-                    };
+                    return OperationGenerator<AppUser>.FailedOperationGenerator(AppUserFactory.CreateDefaultAppUser());
                 }
                 //Set default fields
                 //TODO: set user's role to regular
@@ -51,11 +52,7 @@ namespace uHubAPI.Features.AppUserRepo.Services
                 _context.AppUsers.Add(newUser);
                 await _context.SaveChangesAsync();
 
-                return new OperationResult<AppUser>()
-                {
-                    Success = true,
-                    Entity = newUser
-                };
+                return OperationGenerator<AppUser>.SuccessOperationGenerator(newUser);
             }
             catch(Exception ex)
             {
