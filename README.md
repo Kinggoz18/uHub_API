@@ -43,7 +43,6 @@ Add your appsettings.json and appsettings.Development.json files with your MySQL
   "ConnectionStrings": {
     "DefaultConnection": "Server=localhost;Database=YourDatabase;User=root;Password=YourPassword;"
   },
-  // ...
 }
 ```
 ## Configuration
@@ -58,7 +57,7 @@ To observe the development progress, you can:
     Follow along with ongoing discussions in pull requests.
 
 ## Current API Endpoints
-- [AppUser]
+- AppUser
 
 Feel free to explore the available API endpoints in Swagger UI when the API is running.
 
