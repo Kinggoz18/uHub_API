@@ -53,8 +53,6 @@ Observing Development
 To observe the development progress, you can:
 
     Check the commit history for recent changes.
-    Review and participate in open issues.
-    Follow along with ongoing discussions in pull requests.
 
 ## Current API Endpoints
 - AppUser
