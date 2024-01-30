@@ -1,6 +1,7 @@
 using uHubAPI.Features.AppUserRepo.AppUserService;
 using Microsoft.AspNetCore.Mvc;
 using uHubAPI.Features.AppUserRepo.Models;
+using System.Threading.Tasks;
 
 namespace uHubAPI.Features.AppUserRepo.Controllers
 {
@@ -13,9 +14,9 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
     {
         private readonly CreateAppUser _createAppUserService;
         private readonly LoginAppUser _loginAppUserService;
-        private readonly DeleteAppUser _deleteAppUser;
-        private readonly UpdateAppUser _updateAppUser;
-        private readonly GetAppUser _getAppUser;
+        private readonly DeleteAppUser _deleteAppUserService;
+        private readonly UpdateAppUser _updateAppUserService;
+        private readonly GetAppUser _getAppUserService;
 
         public AppUserController(IAppUserServiceFactory userServiceFactory)
         {
@@ -25,19 +26,19 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             _loginAppUserService = (LoginAppUser)userServiceFactory.Create("LoginAppUser")
                 ?? throw new ArgumentNullException("LoginAppUser Service was not configured.");
 
-            _deleteAppUser = (DeleteAppUser)userServiceFactory.Create("CreateAppUser")
+            _deleteAppUserService = (DeleteAppUser)userServiceFactory.Create("CreateAppUser")
                ?? throw new ArgumentNullException("CreateAppUser Service was not configured.");
 
-            _updateAppUser = (UpdateAppUser)userServiceFactory.Create("LoginAppUser")
+            _updateAppUserService = (UpdateAppUser)userServiceFactory.Create("LoginAppUser")
                 ?? throw new ArgumentNullException("LoginAppUser Service was not configured.");
 
-            _getAppUser = (GetAppUser)userServiceFactory.Create("LoginAppUser")
+            _getAppUserService = (GetAppUser)userServiceFactory.Create("LoginAppUser")
                 ?? throw new ArgumentNullException("LoginAppUser Service was not configured.");
         }
 
 
         /// <summary>
-        /// Create App user controller
+        /// Controller that handdles creating an app user
         /// </summary>
         /// <param name="appUser">Body request</param>
         /// <returns></returns>
@@ -82,6 +83,11 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             return CreatedAtAction("LoginAppUser", new { result.Entity.UserId }, result.Entity);
         }
 
+        /// <summary>
+        /// Update an app user first name controller 
+        /// </summary>
+        /// <param name="updateInfo">Object containing the new first name and the account id to be updated.</param>
+        /// <returns></returns>
         [HttpPut("UpdateAppUser/FirstName")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -91,7 +97,7 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var result = await _updateAppUser.UpdateByInfo(updateInfo, UpdateType.FirstName);
+            var result = await _updateAppUserService.UpdateByInfo(updateInfo, UpdateType.FirstName);
             if (!result.Success)
             {
                 return BadRequest("Updating user first name was unsuccessful.");
@@ -99,6 +105,11 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Update an app user last name controller 
+        /// </summary>
+        /// <param name="updateInfo">Object containing the new last name and the account id to be updated.</param>
+        /// <returns></returns>
         [HttpPut("UpdateAppUser/LastName")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> UpdateLastName(UpdateUser updateInfo)
@@ -107,7 +118,7 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var result = await _updateAppUser.UpdateByInfo(updateInfo, UpdateType.LastName);
+            var result = await _updateAppUserService.UpdateByInfo(updateInfo, UpdateType.LastName);
             if (!result.Success)
             {
                 return BadRequest("Updating user last name was unsuccessful.");
@@ -115,6 +126,11 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Update an app user email controller 
+        /// </summary>
+        /// <param name="updateInfo">Object containing the new email and the account id to be updated.</param>
+        /// <returns></returns>
         [HttpPut("UpdateAppUser/Email")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -124,7 +140,7 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var result = await _updateAppUser.UpdateByInfo(updateInfo, UpdateType.Email);
+            var result = await _updateAppUserService.UpdateByInfo(updateInfo, UpdateType.Email);
             if (!result.Success)
             {
                 return BadRequest("Updating user email was unsuccessful.");
@@ -132,6 +148,11 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Controller that handdles Updating an app user Locked status 
+        /// </summary>
+        /// <param name="accountId">The account id to be updated.</param>
+        /// <returns></returns>
         [HttpPut("UpdateAppUser/IsLocked")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -141,7 +162,7 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var result = await _updateAppUser.UpdateById(accountId, UpdateType.IsLocked);
+            var result = await _updateAppUserService.UpdateById(accountId, UpdateType.IsLocked);
             if (!result.Success)
             {
                 return BadRequest("Updating locked status was unsuccessful.");
@@ -149,6 +170,11 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Controller that handdles Updating an app user banned status 
+        /// </summary>
+        /// <param name="accountId">The account id to be updated.</param>
+        /// <returns></returns>
         [HttpPut("UpdateAppUser/IsBanned")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -158,7 +184,7 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var result = await _updateAppUser.UpdateById(accountId, UpdateType.IsBanned);
+            var result = await _updateAppUserService.UpdateById(accountId, UpdateType.IsBanned);
             if (!result.Success)
             {
                 return BadRequest("Updating banned status was unsuccessful.");
@@ -166,6 +192,11 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Controller that handdles Updating increamenting an app user report count 
+        /// </summary>
+        /// <param name="accountId">The account id to be updated.</param>
+        /// <returns></returns>
         [HttpPut("UpdateAppUser/ReportCount")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -175,7 +206,7 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var result = await _updateAppUser.UpdateById(accountId, UpdateType.ReportCount);
+            var result = await _updateAppUserService.UpdateById(accountId, UpdateType.ReportCount);
             if (!result.Success)
             {
                 return BadRequest("Updating report count was unsuccessful.");
@@ -183,17 +214,21 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             return NoContent();
         }
 
-
+        /// <summary>
+        /// Controller that handdles Updating an app user phone number
+        /// </summary>
+        /// <param name="updateInfo">Object containing the new phone and the account id to be updated.</param>
+        /// <returns></returns>
         [HttpPut("UpdateAppUser/PhoneNumber")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdatePhoneNumber(UpdateUser userInfo)
+        public async Task<IActionResult> UpdatePhoneNumber(UpdateUser updateInfo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var result = await _updateAppUser.UpdateByInfo(userInfo, UpdateType.PhoneNumber);
+            var result = await _updateAppUserService.UpdateByInfo(updateInfo, UpdateType.PhoneNumber);
             if (!result.Success)
             {
                 return BadRequest("Updating report count was unsuccessful.");
@@ -201,6 +236,11 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Controller that handles deleting an app user
+        /// </summary>
+        /// <param name="accountId">The id of the app user to be deleted</param>
+        /// <returns></returns>
         [HttpDelete("DeleteAppUser")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -210,12 +250,56 @@ namespace uHubAPI.Features.AppUserRepo.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var result = await _deleteAppUser.DeleteUser(accountId);
+            var result = await _deleteAppUserService.DeleteUser(accountId);
             if (!result.Success)
             {
                 return BadRequest("User was not found");
             }
-            return Ok();
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Controller that handles getting an app user
+        /// </summary>
+        /// <param name="accountId">The id of the app user to be deleted</param>
+        /// <returns></returns>
+        [HttpGet("GetAppUser")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetAppUser(string accountId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await _getAppUserService.GetAppUserById(accountId);
+            if (!result.Success)
+            {
+                return BadRequest("User was not found");
+            }
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Controller that handles getting all app users
+        /// </summary>
+        /// <param name="pageStart">Where to start retriving from</param>
+        /// <returns></returns>
+        [HttpGet("GetAllAppUsers")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetAllAppUser(int pageStart)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await _getAppUserService.GetAllAppUser(pageStart);
+            if (!result.Success)
+            {
+                return BadRequest("User was not found");
+            }
+            return Ok(result);
         }
     }
 }

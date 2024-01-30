@@ -17,6 +17,12 @@ namespace uHubAPI.Features.AppUserRepo.AppUserService
 			_context = context;
 		}
 
+        /// <summary>
+        /// Method to get an app user by their Id
+        /// </summary>
+        /// <param name="accountId"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
 		public async Task<OperationResult<AppUser>> GetAppUserById(string accountId)
 		{
 			try
@@ -36,7 +42,7 @@ namespace uHubAPI.Features.AppUserRepo.AppUserService
 		}
 
         /// <summary>
-        /// 
+        /// Method to get all app users in the db
         /// </summary>
         /// <param name="pageStart"></param>
         /// <returns></returns>

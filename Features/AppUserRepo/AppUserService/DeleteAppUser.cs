@@ -20,6 +20,11 @@ namespace uHubAPI.Features.AppUserRepo.AppUserService
 			_context = context;
 		}
 
+		/// <summary>
+		/// Deletes an app user if they exist.
+		/// </summary>
+		/// <param name="accountId">The account id to be deleted.</param>
+		/// <returns></returns>
 		public async Task<OperationResult<AppUser>> DeleteUser(string accountId)
 		{
 			var result = await _finder.FindByIdAsync(accountId);

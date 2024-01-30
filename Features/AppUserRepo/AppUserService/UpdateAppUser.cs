@@ -147,7 +147,7 @@ namespace uHubAPI.Features.AppUserRepo.AppUserService
         }
 
         /// <summary>
-        /// Method to update to a user with new information
+        /// Method to update to a user with new information in body request
         /// </summary>
         /// <param name="updateInfo">The new update information</param>
         /// <param name="type">The type of update being applied</param>
@@ -178,7 +178,7 @@ namespace uHubAPI.Features.AppUserRepo.AppUserService
         }
 
         /// <summary>
-        /// Method to update to a user without new information
+        /// Method to update to a user without new information in body request
         /// </summary>
         /// <param name="accountId">The Account Id of the entity to be updated</param>
         /// <param name="type">The type of update being applied</param>
